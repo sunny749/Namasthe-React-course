@@ -1,0 +1,28 @@
+{
+  "name": "namasthe-react-course",
+  "version": "1.0.0",
+  "description": "this is the namsthe-react-course lerning application",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunny749/Namasthe-React-course.git"
+  },
+  "author": "sunny gante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunny749/Namasthe-React-course/issues"
+  },
+  "homepage": "https://github.com/sunny749/Namasthe-React-course#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":["last 2 versions"]
+}

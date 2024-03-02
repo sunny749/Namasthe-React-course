@@ -1,32 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// if we want to create a nested divs lets see how we can create that structure
+// reactCreateElement==jsObject=>HtmlElement by render()method
+const headding=React.createElement('h1',{id:'headding'},'Namasthe React From CreateElement')
+// now we create the react element by jsx syntax
+// jsx => ReactCreateElement using babel and babel is managed by parcel bundler
+// the ReactCreateElement object is converted to html element by render method
+// const jsxHeadding=<h1 id='headding'>Namasthe React From JsxSyntax</h1>
+// jsx is not html its html like syntax
+// const jsxHeadding=(<h1 id='headding'>
+// Namasthe React From JsxSyntax
+// </h1>)
+// if we want to write code in multilines then we need to use brackets else babel 
+// dont understand the jsx to conver the reactElements
 
-// const Parent=React.createElement('div',{id:'parent'},
-//             React.createElement('div',{id:'child'},
-//             React.createElement('h1',{},'iam h1 subChaild')
-//             )
-// )
-// if we want to create more than one chaild in the same level the  we have to pass
-// array of child elements lets see example
-
-const Parent=React.createElement('div',{id:'parent'},
-            React.createElement('div',{id:'child'},
-            [React.createElement('h1',{},'iam h1 subChaild'),React.createElement('h2',{},'iam h2 subChaild in same level')]
-            )
+// components
+const JsxHeadding=()=><h1 id='headding'>Namasthe React From JsxSyntax</h1>
+number=1000
+const HeaddingComponent=()=>(
+<div className='container'>
+{/* component inside component is called ComponentComposition*/}
+<JsxHeadding />
+{/* {console.log(number)} */}
+{/* we can use our own js inside the curly brace in side the jsx*/}
+<h1>Namasthe React From Headding Component</h1>
+</div>
 )
-// if we want to create lots of childrens in the same level and nested level
-// then the code locks so difficult to understand thats why the react is 
-// using jsx syntax that is same as html and some javascript 
-// and if we use render method it acually replace the content if any content
-// is present in the root html element and react is a library we can use react
-// in any frame work and we can use react to build larger scale applications
-// cdn(content delivery network) is working with internet it connect the user 
-// with the nearest server and inject the react or any techinology we want 
-// and cross-origin is using because we inject different code from differet 
-// origins the cross origin gives securety the order of screept tags are mandatory
-
-
-// const headding=React.createElement('h1',{id:'headding'},'Hellow World From React')
-const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(Parent)
+const root=ReactDOM.createRoot(document.getElementById('root'))
+root.render(HeaddingComponent())

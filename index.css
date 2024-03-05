@@ -39,7 +39,8 @@
     border: 1px solid black;
 }
 
-.search {
+.search-container {
+    display: flex;
     padding: 10px
 }
 

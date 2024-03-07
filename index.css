@@ -39,7 +39,7 @@
     border: 1px solid black;
 }
 
-.search-container {
+.filter {
     display: flex;
     padding: 10px
 }

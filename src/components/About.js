@@ -1,12 +1,13 @@
-import User from "./User"
-import UserClass from "./UserClass"
+import useFetch from '../Hooks/useFetch'
 
 const About=()=>{
+    const data=useFetch('https://api.github.com/users/sunny749')
+    if(data===null)return <h1>Loading...</h1>
     return (
         <>
-        <h1>This is Aboutus Page</h1>
-        <User name={'sunny functional component'} location={'chintalaplalli'}/>
-        <UserClass name={'sunny class component'} location={'chintalaplalli'}/>
+        <img style={{width:'200px'}}src={data.avatar_url} alt="" />
+        <h2>{data.name}</h2>
+        <h3>{data.location}</h3>
         </>
     )   
 }

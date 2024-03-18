@@ -27,7 +27,7 @@ const Body = () => {
     const json = await data.json();
 
     // Optional Chaining
-    console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
+    // console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
     setListOfRestraunt(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurant(json?.data.cards[4]?.card.card?.gridElements?.infoWithStyle?.restaurants);
   };
@@ -36,18 +36,19 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="px-10">
+      <div className="flex">
+        <div className="py-4 m-4">
           <input
             type="text"
-            className="search-box"
+            className='p-1 rounded-lg border border-solid border-black'
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+            className="ml-4 rounded-lg px-4 py-2 bg-green-200"
             onClick={() => {
               // Filter the restraunt cards and update the UI
               // searchText
@@ -63,8 +64,9 @@ const Body = () => {
             Search
           </button>
         </div>
+        <div className="flex items-center">
         <button
-          className="filter-btn"
+            className="ml-4 rounded-lg px-4 py-2 bg-gray-200"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) =>res.info.avgRating > 4.3
@@ -74,8 +76,9 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap gap-2">
         {filteredRestaurant.map((restaurant) => (
             <Link key={restaurant.info.id} to={'/restaurent/'+restaurant.info.id}><RestaurantCard resData={restaurant} /></Link>
         ))}

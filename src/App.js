@@ -1,4 +1,4 @@
-import React,{lazy,Suspense} from "react";
+import React,{lazy,Suspense,useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
@@ -8,6 +8,8 @@ import Error from './components/Error';
 import RestaurantMenu from "./components/RestaurentMenu";
 import {createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom'
 import Shimmer from "./components/Shimmer.js";
+import UserContext from "./utils/UserContext.js";
+import User from "./components/User.js";
 /**
  * Header
  *  - Logo
@@ -25,10 +27,16 @@ import Shimmer from "./components/Shimmer.js";
  *  - Contact
  */
 const AppLayout = () => {
+  const [loggedIn,setLoggedIn]=useState({loggedInUser:'Sunny Gante'})
   return (
+    
     <div className="app">
+      <UserContext.Provider value={{...loggedIn,setLoggedIn}}>
       <Header />
+      </UserContext.Provider>
+      <UserContext.Provider value={{...loggedIn,setLoggedIn}}>
       <Outlet />
+      </UserContext.Provider>
     </div>
   );
 };

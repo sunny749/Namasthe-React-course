@@ -1,14 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom'
 import useFetch from "../Hooks/useFetch";
 import useOnlineStatus from "../Hooks/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // Local State Variable - Super powerful variable
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const {loggedInUser,setLoggedIn}=useContext(UserContext)
 
   const [searchText, setSearchText] = useState("");
 
@@ -23,7 +25,6 @@ const Body = () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
-
     const json = await data.json();
 
     // Optional Chaining
@@ -76,6 +77,7 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+            <input className="mx-4 border p-2 rounded-lg border-black" type="text" value={loggedInUser} onChange={(e)=>setLoggedIn({loggedInUser:e.target.value})}/>
         </div>
       </div>
       <div className="flex flex-wrap gap-2">

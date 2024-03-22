@@ -9,7 +9,9 @@ import RestaurantMenu from "./components/RestaurentMenu";
 import {createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom'
 import Shimmer from "./components/Shimmer.js";
 import UserContext from "./utils/UserContext.js";
-import User from "./components/User.js";
+import appStore from "./utils/appStore.js";
+import {Provider} from 'react-redux'
+import Cart from './components/Cart'
 /**
  * Header
  *  - Logo
@@ -29,14 +31,20 @@ import User from "./components/User.js";
 const AppLayout = () => {
   const [loggedIn,setLoggedIn]=useState({loggedInUser:'Sunny Gante'})
   return (
-    
+    // we are not Provide new context heare so when we access heare we get
+    // default user as context
     <div className="app">
+      {/* heare we provide the new context so inside this we get updated data
+      we can provide multipile values for different components 
+      */}
+      <Provider store={appStore}>
       <UserContext.Provider value={{...loggedIn,setLoggedIn}}>
       <Header />
       </UserContext.Provider>
       <UserContext.Provider value={{...loggedIn,setLoggedIn}}>
       <Outlet />
       </UserContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -65,6 +73,10 @@ const appRouter=createBrowserRouter([
       {
         path:'/restaurent/:resId',
         element:<RestaurantMenu/>
+      },
+      {
+        path:'/cart',
+        element:<Cart/>
       },
     ],
     errorElement:<Error />,

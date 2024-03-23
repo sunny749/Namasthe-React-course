@@ -5,7 +5,6 @@ import { clearCart } from '../utils/cartSlice'
 const Cart=()=>{
     const dispatch=useDispatch()
     const cartItems=useSelector(state=>state.cart.items)
-    console.log(cartItems)
     if(cartItems.length===0)return <div className='text-center p-4 m-4'>Your cart is empty add some food to your cart</div>
     return (
         <div className='text-center p-4 mt-4'>

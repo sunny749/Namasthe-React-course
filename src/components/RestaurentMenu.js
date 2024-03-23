@@ -21,7 +21,7 @@
         const categories=resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>c.card?.card?.['@type']==='type.googleapis.com/swiggy.presentation.food.v2.ItemCategory')
         return (
             <div className="text-center">
-                <h1 className='text-2xl my-6 font-bold'>{name}</h1>
+                <h1 className='text-2xl my-6 font-bold' data-testid='hotel name'>{name}</h1>
                 <h3 className='font-bold text-lg'>{cuisines.join(',')}-{costForTwoMessage}</h3>
                 {categories.map((c,i)=><RestaurantCategorie show={show===i?true:false} index={i} showHandler={showHandler} key={i} data={c.card.card} />)}
             </div>

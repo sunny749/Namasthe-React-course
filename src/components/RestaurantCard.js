@@ -6,7 +6,7 @@ import {useContext} from 'react'
 const RestaurantCard = (props) => {
     const { resData } = props;
     const {loggedInUser}=useContext(UserContext)
-  
+
     const {
       cloudinaryImageId,
       name,
@@ -17,7 +17,7 @@ const RestaurantCard = (props) => {
     const {deliveryTime} =resData?.info?.sla
 
     return (
-      <div className="p-4 m-4 rounded-lg w-[200px]" style={{ backgroundColor: "#f0f0f0" }}>
+      <div data-testid='card' className="p-4 m-4 rounded-lg w-[200px]" style={{ backgroundColor: "#f0f0f0" }}>
         <img
           className="rounded-lg"
           alt="res-logo"
@@ -35,4 +35,13 @@ const RestaurantCard = (props) => {
     );
   };
   
+  const pramotedResCard=(RestaurantCard)=>{
+    return ({resData})=>{
+          return(<div className="relative">
+                  <div className="absolute left-4 p-1 bg-black rounded-lg text-white">Pramoted</div>
+                  <RestaurantCard resData={resData}/>
+                </div>)
+    }
+  }
+  export {pramotedResCard}
   export default RestaurantCard
